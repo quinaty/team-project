@@ -12,9 +12,43 @@
             <!-- 头部 -->
             <div class="header" id="goToTop">
                 <div class="system_name" id="homeLink">教务系统</div>
-                <div class="login_info">
-                    <button class="login_button">登录</button>
-                    <!-- <span class="user_info">姓名</span> -->
+                <div class="login_info" id="loginInfo">
+                    <!-- 初始显示登录按钮 -->
+                    <button class="login_button" id="login_button">登录</button>
+
+                    <!-- 登录后显示用户名和下拉菜单 -->
+                    <div class="user_profile hidden" id="userProfile">
+                        <span class="username" id="displayName">姓名</span>
+                        <div class="dropdown_menu" id="dropdownMenu">
+                            <button class="logout_button" id="logoutButton">
+                                退出登录
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 登录栏（初始隐藏） -->
+            <div id="login_modal" class="hidden">
+                <!-- 关闭按钮（右上角 X） -->
+                <span id="close_modal" class="close_button">&times;</span>
+
+                <!-- 登录表单 -->
+                <div class="login_form">
+                    <span class="login_form_title">登录</span>
+                    <input
+                        type="text"
+                        id="userId"
+                        placeholder="请输入学号或工号"
+                        required
+                    />
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="密码"
+                        required
+                    />
+                    <button id="submit_login">登录</button>
                 </div>
             </div>
 

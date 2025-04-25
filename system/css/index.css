@@ -47,6 +47,7 @@ body {
 }
 
 .login_info {
+    position: relative;
     display: flex;
     align-items: center;
 }
@@ -68,6 +69,137 @@ body {
 .user_info {
     font-size: 14px;
 }
+
+/* 用户信息区域样式 */
+
+.user_profile {
+    position: relative;
+    cursor: pointer;
+}
+
+.username {
+    color: white;
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.dropdown_menu {
+    position: absolute;
+    right: -40%;
+    top: 160%;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none;
+    display: flex;
+}
+
+.dropdown_menu button {
+    width: 100%;
+    padding: 8px 16px;
+    /* text-align: left; */
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    text-align: center; /* 修改这里，将文本水平居中对齐，实现横向排列显示 */
+    white-space: nowrap; /* 防止文本换行，保持在一行显示 */
+}
+
+.dropdown_menu button:hover {
+    background-color: #f5f5f5;
+}
+
+/*登录按钮隐藏类*/
+.hidden {
+    display: none !important;
+}
+
+/*登录框（模态框） 样式*/
+#login_modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 300px;
+}
+
+/* 登录栏隐藏状态 */
+.hidden {
+    display: none;
+}
+
+/* 模态框背景遮罩 */
+.modal_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+/* 关闭按钮 */
+.close_button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* 登录表单 */
+.login_form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login_form_title {
+    display: inline-block;
+    color: #3e3e3e;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.login_form input {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+.login_form input:hover {
+    border-color: #007bff; /* 悬停时输入框边框变蓝色 */
+}
+
+.login_form button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login_form button:hover {
+    background-color: #0172eb;
+    transform: scale(1.01); /* 放大10% */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /*可选：添加阴影增强立体感*/
+}
+
+/*写到这里：登录后，点击姓名出现下拉栏，可退出登录*/
 
 /* 功能分区样式 */
 .function_area {
@@ -94,8 +226,10 @@ body {
     border: 1.5px solid #007bffa1;
     transform: scale(1.02); /* 放大效果（轻微放大） */
 }
+
 /* 模块标题 */
 .module_title {
+    color: #3e3e3e;
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 10px;
