@@ -54,31 +54,102 @@
 
             <!-- 功能分区 -->
             <div class="function_area">
-                <!-- 信息查询模块 -->
                 <div class="module">
                     <div class="module_title">信息查询</div>
-                    <div class="module_item">学生档案管理</div>
-                    <div class="module_item">学籍异动处理</div>
-                    <div class="module_item">成绩查询与统计</div>
-                    <div class="module_item">奖惩记录</div>
-                    <div class="module_item">课表查询</div>
+                    <button
+                        class="module_item requires-login"
+                        data-function="student-archive"
+                        href="./student_archive.html"
+                    >
+                        学生档案管理
+                    </button>
+                    <button
+                        class="module_item requires-login"
+                        data-function="student-status"
+                        href="./student_status.html"
+                    >
+                        学籍异动处理
+                    </button>
+                    <button
+                        class="module_item requires-login"
+                        data-function="grades"
+                        href="./grades.html"
+                    >
+                        成绩查询与统计
+                    </button>
+                    <button
+                        class="module_item requires-login"
+                        data-function="rewards-punishments"
+                        href="./rewards-punishments.html"
+                    >
+                        奖惩记录
+                    </button>
+                    <button
+                        class="module_item requires-login"
+                        data-function="timetable"
+                        href="./timetable.html"
+                    >
+                        课表查询
+                    </button>
                 </div>
 
                 <!-- 课程管理模块 -->
                 <div class="module">
                     <div class="module_title">课程管理</div>
-                    <div class="module_item">专业培养方案</div>
-                    <div class="module_item">课程库管理</div>
-                    <div class="module_item">开课计划</div>
-                    <div class="module_item">教材选用</div>
+                    <button
+                        class="module_item requires-login"
+                        data-function="program"
+                        href="./program.html"
+                    >
+                        专业培养方案
+                    </button>
+                    <button
+                        class="module_item requires-login"
+                        data-function="course-library"
+                        href="./course_library.html"
+                    >
+                        课程库管理
+                    </button>
+                    <button
+                        class="module_item requires-login"
+                        data-function="course-plan"
+                        href="./course_plan.html"
+                    >
+                        开课计划
+                    </button>
+                    <button
+                        class="module_item requires-login"
+                        data-function="textbook-selection"
+                        href="./textbook_selection.html"
+                    >
+                        教材选用
+                    </button>
                 </div>
 
                 <!-- 教室资源模块 -->
                 <div class="module">
                     <div class="module_title">教室资源</div>
-                    <div class="module_item">教室使用调度</div>
-                    <div class="module_item">教室设备维护</div>
-                    <div class="module_item">借用审批流程</div>
+                    <button
+                        class="module_item requires-login"
+                        data-function="classroom-scheduling"
+                        href="./classroom_scheduling.html"
+                    >
+                        教室使用调度
+                    </button>
+                    <button
+                        class="module_item requires-login"
+                        data-function="classroom-maintenance"
+                        href="./classroom_maintenance.html"
+                    >
+                        教室设备维护
+                    </button>
+                    <button
+                        class="module_item requires-login"
+                        data-function="classroom-approval"
+                        href="./classroom_approval.html"
+                    >
+                        借用审批流程
+                    </button>
                 </div>
             </div>
         </div>

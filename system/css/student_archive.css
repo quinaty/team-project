@@ -1,0 +1,9 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh; /* 确保 body 高度足够 */
+    background-color: #e3f1fe;
+}

@@ -27,8 +27,78 @@ document.addEventListener("DOMContentLoaded", function () {
     const displayName = document.getElementById("displayName");
     const logoutButton = document.getElementById("logoutButton");
     const dropdownMenu = document.getElementById("dropdownMenu");
+    const loginPrompt = document.getElementById("login_prompt");
 
     let isLoggedIn = false;
+
+    // 检查登录状态
+    function checkLoginStatus() {
+        const isLoggedIn_1 = localStorage.getItem("isLoggedIn") === "true";
+        const username = localStorage.getItem("username") || "张三";
+
+        //已登录，则功能区点击可以跳转
+        IfLoginIn(isLoggedIn_1);
+
+        if (isLoggedIn_1) {
+            displayName.textContent = username;
+            loginButton.classList.add("hidden");
+            userProfile.classList.remove("hidden");
+            dropdownMenu.style.display = "none"; //让“退出登录框在刷新的时候不要出现”
+
+            // 让用户点击用户名区域显示/隐藏下拉菜单，
+            displayName.addEventListener("click", (e) => {
+                if (isLoggedIn_1) {
+                    e.stopPropagation(); // 阻止事件冒泡
+                    dropdownMenu.style.display =
+                        dropdownMenu.style.display === "block"
+                            ? "none"
+                            : "block";
+                }
+            });
+
+            // 设置点击事件
+            if (!logoutButton.hasAttribute("data-event-set")) {
+                logoutButton.addEventListener("click", () => {
+                    isLoggedIn_1 = false;
+                    displayName.textContent = "姓名";
+
+                    loginButton.classList.remove("hidden");
+                    userProfile.classList.add("hidden");
+
+                    localStorage.removeItem("isLoggedIn");
+                    localStorage.removeItem("username");
+                });
+
+                logoutButton._clickEventBound = true;
+            }
+        } else {
+            displayName.textContent = "姓名";
+            loginButton.classList.remove("hidden");
+            userProfile.classList.add("hidden");
+        }
+    }
+
+    // 为所有需要登录的功能按钮添加点击事件
+    // 感觉还是有点问题：登录后，刚点击功能区，还是会出现提示栏，但关掉后会正常跳转；
+    function IfLoginIn(isLoggedIn) {
+        document
+            .querySelectorAll(".module_item.requires-login")
+            .forEach((button) => {
+                button.addEventListener("click", function (e) {
+                    if (isLoggedIn) {
+                        // 如果已登录，执行页面跳转
+                        const targetPage = this.getAttribute("href");
+                        if (targetPage) {
+                            window.location.href = targetPage;
+                        }
+                    } else {
+                        e.preventDefault(); // 阻止默认跳转行为
+                        alert("请先登录"); // 提示未登录
+                        return;
+                    }
+                });
+            });
+    }
 
     // 点击登录按钮，显示登录栏并添加遮罩层
     loginButton.addEventListener("click", (e) => {
@@ -99,6 +169,8 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.removeItem("isLoggedIn");
         localStorage.removeItem("username");
 
+        // 自动返回到 index.html 页面
+        window.location.href = "../html/index.html";
         console.log("已退出登录");
     });
 
@@ -136,49 +208,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // 检查登录状态
-    function checkLoginStatus() {
-        const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-        const username = localStorage.getItem("username") || "张三";
-
-        if (isLoggedIn) {
-            displayName.textContent = username;
-            loginButton.classList.add("hidden");
-            userProfile.classList.remove("hidden");
-            dropdownMenu.style.display = "none"; //让“退出登录框在刷新的时候不要出现”
-
-            // 让用户点击用户名区域显示/隐藏下拉菜单，
-            displayName.addEventListener("click", (e) => {
-                if (isLoggedIn) {
-                    e.stopPropagation(); // 阻止事件冒泡
-                    dropdownMenu.style.display =
-                        dropdownMenu.style.display === "block"
-                            ? "none"
-                            : "block";
-                }
-            });
-
-            // 设置点击事件
-            if (!logoutButton.hasAttribute("data-event-set")) {
-                logoutButton.addEventListener("click", () => {
-                    isLoggedIn = false;
-                    displayName.textContent = "姓名";
-
-                    loginButton.classList.remove("hidden");
-                    userProfile.classList.add("hidden");
-
-                    localStorage.removeItem("isLoggedIn");
-                    localStorage.removeItem("username");
-                });
-
-                logoutButton._clickEventBound = true;
-            }
-        } else {
-            displayName.textContent = "姓名";
-            loginButton.classList.remove("hidden");
-            userProfile.classList.add("hidden");
-        }
-    }
     // 确保在页面加载时调用 checkLoginStatus
     checkLoginStatus();
 });

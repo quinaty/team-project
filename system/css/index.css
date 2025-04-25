@@ -199,8 +199,6 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /*可选：添加阴影增强立体感*/
 }
 
-/*写到这里：登录后，点击姓名出现下拉栏，可退出登录*/
-
 /* 功能分区样式 */
 .function_area {
     display: flex;
