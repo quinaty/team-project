@@ -1,0 +1,124 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh; /* 确保 body 高度足够 */
+    background-color: #e3f1fe;
+}
+
+/* 整体容器 */
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* 头部样式 */
+.header {
+    position: fixed; /*头部栏固定*/
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #5c9eff;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 100; /*置于顶层*/
+    cursor: pointer; /* 光标样式，点击可返回首页和顶部 */
+}
+
+.system_name {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer; /* 光标样式，点击可返回首页 */
+    /* transition: transform 0.3s ease, 0.1s ease; 平滑过渡效果 */
+}
+
+/* 系统名悬停放大效果 */
+.system_name:hover {
+    transform: scale(1.05); /* 放大10% */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 可选：添加阴影增强立体感 */
+}
+
+.login_info {
+    display: flex;
+    align-items: center;
+}
+
+.login_button {
+    margin-right: 10px;
+    padding: 5px 18px;
+    background-color: #f9fafb;
+    color: #3e3e3e;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+.login_button:hover {
+    transform: scale(1.05); /* 放大10% */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /*可选：添加阴影增强立体感*/
+}
+.user_info {
+    font-size: 14px;
+}
+
+/* 功能分区样式 */
+.function_area {
+    display: flex;
+    flex: 1; /* 剩余空间分配给功能区 */
+    gap: 20px; /* 模块间距 */
+    padding: 20px;
+    margin: 60px; /*避免被头部栏遮挡*/
+}
+
+/* 模块容器通用样式 */
+.module {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* 模块均分剩余空间 */
+    gap: 10px; /* 列表项间距 */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 3px 11px rgba(0, 0, 0, 0.1); /*可选：添加阴影增强立体感*/
+}
+.module:hover {
+    border: 1.5px solid #007bffa1;
+    transform: scale(1.02); /* 放大效果（轻微放大） */
+}
+/* 模块标题 */
+.module_title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* 列表项 */
+.module_item {
+    color: #3e3e3e;
+    padding: 8px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.module_item:hover {
+    background-color: #e6f3ff; /* 鼠标悬停时背景色变浅蓝 */
+    box-shadow: 0 2px 3px rgba(15, 140, 230, 0.1); /*可选：添加阴影增强立体感*/
+}
+/* 响应式适配 */
+@media (max-width: 768px) {
+    .function_area {
+        flex-direction: column; /* 小屏幕时垂直排列模块 */
+    }
+}
