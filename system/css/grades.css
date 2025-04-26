@@ -1,0 +1,107 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --bg-color: #f8f9fa;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui;
+    margin: 2rem auto;
+    max-width: 1200px;
+    padding: 0 20px;
+    background-color: var(--bg-color);
+}
+
+.filter-group {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(26, 66, 125, 0.1);
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 2rem;
+}
+
+select {
+    padding: 0.5rem 1rem;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    background: white;
+    min-width: 200px;
+    font-size: 1rem;
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+}
+
+.grade-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 1px 3px rgba(9, 73, 183, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.grade-table th, 
+.grade-table td {
+    padding: 1rem;
+    text-align: left;
+}
+
+/* 表头颜色 */
+.grade-table thead {
+    background: #2980b9;
+    border-bottom: 2px solid #2980b9;
+    color: white;
+}
+
+.grade-table th.sortable {
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.grade-table th.sortable:hover {
+    background-color: #34495e;
+}
+
+.grade-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.grade-table tbody tr:hover {
+    background-color: #ecf5ff;
+}
+
+.summary {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    font-size: 1.1rem;
+}
+
+.summary strong {
+    color: var(--secondary-color);
+    margin: 0 0.5rem;
+}
+
+/* 添加成绩警告 */
+.grade-table tbody tr.warning-row {
+    background-color: #ffebee !important; 
+    color: #c62828;
+    font-weight: bold;
+    border-left: 3px solid #c62828;
+}
+
+.grade-table tbody tr.warning-row:hover {
+    background-color: #ffcdd2 !important;
+}
+.warning-row td:first-child::before {
+    content: "⚠️";
+    margin-right: 8px;
+}

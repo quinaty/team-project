@@ -1,9 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>成绩查询与统计</title>
-    </head>
-    <body></body>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>成绩查询与统计</title>
+    <link rel="stylesheet" href="../css/grades.css" />
+    <link rel="stylesheet" href="../css/index.css" />
+    <script src="../js/index.js"></script>
+    <script src="../js/student_archive.js"></script>
+</head>
+<body>
+ <!-- 头部 -->
+ <div class="header" id="goToTop">
+    <div class="system_name" id="homeLink">教务系统</div>
+    <div class="login_info" id="loginInfo">
+        <!-- 初始显示登录按钮 -->
+        <button class="login_button" id="login_button">登录</button>
+        <!-- 写到这里，要解决子页面顶部栏的姓名那里“退出登录”的点击事件，要设置js -->
+
+        <!-- 登录后显示用户名和下拉菜单 -->
+        <div class="user_profile hidden" id="userProfile">
+            <span class="username" id="displayName">姓名</span>
+            <div class="dropdown_menu" id="dropdownMenu">
+                <button class="logout_button" id="logoutButton">
+                    退出登录
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- 成绩显示 -->
+    <div class="filter-group">
+        <select id="term">
+            <option value="current">2023-2024学年 第一学期</option>
+            <option>2022-2023学年 第二学期</option>
+            <option>2022-2023学年 第一学期</option>
+        </select>
+        
+        <select id="type">
+            <option value="all">全部课程类型</option>
+            <option>必修课</option>
+            <option>选修课</option>
+            <option>通识课</option>
+        </select>
+    </div>
+
+    <table class="grade-table">
+        <thead>
+            <tr>
+                <th>学期</th>
+                <th>科目名称</th>
+                <th>学分</th>
+                <th class="sortable" data-sort="score">成绩 ▼</th>
+                <th class="sortable" data-sort="gpa">绩点 ▼</th>
+                <th>课程类型</th>
+                <th>修读方式</th>
+                <th>考试性质</th>
+            </tr>
+        </thead>
+        <tbody id="gradeBody"></tbody>
+    </table>
+
+    <div class="summary">
+        本学期平均成绩：<strong id="avgScore">-</strong>
+        平均绩点：<strong id="avgGPA">-</strong>
+    </div>
+    <script src="../js/grades.js"></script>
+</body>
 </html>

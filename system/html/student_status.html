@@ -4,6 +4,150 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>学籍异动处理</title>
+        <link rel="stylesheet" href="../css/index.css" />
+        <link rel="stylesheet" href="../css/status.css" />
+        <script src="../js/index.js"></script>
+        <script src="../js/student_archive.js"></script>
+        <script src="../js/status.js"></script>
     </head>
-    <body></body>
+    <body>
+     <!-- 头部 -->
+ <div class="header" id="goToTop">
+    <div class="system_name" id="homeLink">教务系统</div>
+    <div class="login_info" id="loginInfo">
+        <!-- 初始显示登录按钮 -->
+        <button class="login_button" id="login_button">登录</button>
+        <!-- 写到这里，要解决子页面顶部栏的姓名那里“退出登录”的点击事件，要设置js -->
+
+        <!-- 登录后显示用户名和下拉菜单 -->
+        <div class="user_profile hidden" id="userProfile">
+            <span class="username" id="displayName">姓名</span>
+            <div class="dropdown_menu" id="dropdownMenu">
+                <button class="logout_button" id="logoutButton">
+                    退出登录
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+<!-- 学籍信息表单 -->
+<div class="student-info">
+    <h3>当前学籍信息</h3>
+    <div class="info-grid">
+        <div class="info-item">
+            <span class="label">姓名：</span>
+            <span class="value">张三</span>
+        </div>
+        <div class="info-item">
+            <span class="label">性别：</span>
+            <span class="value">男</span>
+        </div>
+        <div class="info-item">
+            <span class="label">学号：</span>
+            <span class="value">2021211001</span>
+        </div>
+        <div class="info-item">
+            <span class="label">院系：</span>
+            <span class="value">计算机学院</span>
+        </div>
+        <div class="info-item">
+            <span class="label">专业：</span>
+            <span class="value">计算机科学与技术</span>
+        </div>
+        <div class="info-item">
+            <span class="label">班级：</span>
+            <span class="value">2021级计科1班</span>
+        </div>
+        <div class="info-item">
+            <span class="label">年级：</span>
+            <span class="value">2021级</span>
+        </div>
+        <div class="info-item">
+            <span class="label">在读状态：</span>
+            <span class="value status active">在籍</span>
+        </div>
+    </div>
+</div>
+
+            <form id="changeForm">
+                <div class="container">
+                    <form id="changeForm">
+                         <!-- 异动类别 -->
+                         <div class="form-group">
+                            <label for="grade">异动类别</label>
+                            <select id="grade" required>
+                                <option value="">请选择类别</option>
+                                <option>公派留学</option>
+                                <option>开除学籍</option>
+                                <option>休学</option>
+                                <option>复学</option>
+                                <option>停学</option>
+                                <option>留级</option>
+                                <option>降级</option>
+                                <option>转专业</option>
+                                <option>专升本</option>
+                                <option>本转专</option>
+                                <option>转系</option>
+                                <option>跳级</option>
+                                <option>死亡</option>
+                            </select>
+                        </div>
+                        <!-- 年级选择 -->
+                        <div class="form-group">
+                            <label for="grade">异动后年级</label>
+                            <select id="grade" required>
+                                <option value="">请选择年级</option>
+                                <option>2021级</option>
+                                <option>2022级</option>
+                                <option>2023级</option>
+                                <option>2024级</option>
+                                <option>2025级</option>
+                                <option>2026级</option>
+                                <option>2027级</option>
+                            </select>
+                        </div>
+                        <!-- 院系选择 -->
+                        <div class="form-group">
+                            <label for="department">异动后院系</label>
+                            <select id="department" required>
+                                <option value="">请选择院系</option>
+                                <option value="计算机学院">计算机学院</option>
+                                <option value="文学院">文学院</option>
+                                <option value="管理学院">管理学院</option>
+                            </select>
+                        </div>
+            
+                        <!-- 专业选择 -->
+                        <div class="form-group">
+                            <label for="major">异动后专业</label>
+                            <select id="major" required disabled>
+                                <option value="">请先选择院系</option>
+                            </select>
+                        </div>
+            
+                        <!-- 班级选择（始终显示） -->
+                        <div class="form-group">
+                            <label for="class">异动后班级</label>
+                            <select id="class" required disabled>
+                                <option value="">请先选择专业</option>
+                            </select>
+                        </div>
+                        
+                        <!-- 异动说明 -->
+                        <div class="form-group">
+                            <label for="reason">异动说明</label>
+                            <textarea id="reason" rows="4" required placeholder="......"></textarea>
+                        </div>
+            
+            
+                        <!-- 提交申请 -->
+                        <button type="submit">提交申请</button>
+                    </form>
+                </div>
+            </form>
+        </div>
+        </div>
+    </body>
 </html>

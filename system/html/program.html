@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>培养方案查询系统</title>
+    <link rel="stylesheet" href="../css/training_program.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+
+ <!-- 头部 -->
+ <div class="header" id="goToTop">
+    <div class="system_name" id="homeLink">教务系统</div>
+    <div class="login_info" id="loginInfo">
+        <!-- 初始显示登录按钮 -->
+        <button class="login_button" id="login_button">登录</button>
+        <!-- 写到这里，要解决子页面顶部栏的姓名那里“退出登录”的点击事件，要设置js -->
+
+        <!-- 登录后显示用户名和下拉菜单 -->
+        <div class="user_profile hidden" id="userProfile">
+            <span class="username" id="displayName">姓名</span>
+            <div class="dropdown_menu" id="dropdownMenu">
+                <button class="logout_button" id="logoutButton">
+                    退出登录
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div id="container1">
+        <!-- 培养方案查询 -->
+        <h1>培养方案查询</h1>
+        
+        <div class="selector-group">
+            <select id="college" class="dropdown">
+                <option value="">请选择学院</option>
+            </select>
+            
+            <select id="grade" class="dropdown" disabled>
+                <option value="">请选择年级</option>
+            </select>
+            
+            <select id="major" class="dropdown" disabled>
+                <option value="">请选择专业</option>
+            </select>
+        </div>
+
+        <button id="queryBtn" class="query-button">查询培养方案</button>
+        
+        <div id="noResultMsg" class="no-result-msg">未找到相应培养方案</div>
+        <div id="resultContainer" class="result-container">
+            <embed id="pdfViewer" class="embed-pdf" type="application/pdf">
+        </div>
+    </div>
+
+    <script src="../js/index.js"></script>
+    <script src="../js/student_archive.js"></script>
+    <script src="../js/training_program.js"></script>
+</body>
+</html>

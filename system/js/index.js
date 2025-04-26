@@ -33,13 +33,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 检查登录状态
     function checkLoginStatus() {
-        let isLoggedIn_1 = localStorage.getItem("isLoggedIn") === "true";
+        const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
         const username = localStorage.getItem("username") || "张三";
 
-        //已登录，则功能区点击可以跳转
-        IfLoginIn(isLoggedIn_1);
+        // 更新按钮事件监听器
+        IfLoginIn(isLoggedIn);
+        bindProfileClickHandler(); // 每次状态变化时更新用户名点击事件
 
-        if (isLoggedIn_1) {
+        if (isLoggedIn) {
             displayName.textContent = username;
             loginButton.classList.add("hidden");
             userProfile.classList.remove("hidden");
@@ -80,25 +81,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 为所有需要登录的功能按钮添加点击事件
     // 感觉还是有点问题：登录后，刚点击功能区，还是会出现提示栏，但关掉后会正常跳转；
+    // 为所有需要登录的功能按钮添加点击事件
     function IfLoginIn(isLoggedIn) {
-        document
-            .querySelectorAll(".module_item.requires-login")
-            .forEach((button) => {
-                button.addEventListener("click", function (e) {
-                    if (isLoggedIn) {
-                        // 如果已登录，执行页面跳转
-                        const targetPage = this.getAttribute("href");
-                        if (targetPage) {
-                            window.location.href = targetPage;
-                        }
-                    } else {
-                        e.preventDefault(); // 阻止默认跳转行为
-                        alert("请先登录"); // 提示未登录
-                        return;
-                    }
-                });
-            });
-    }
+    document.querySelectorAll(".module_item.requires-login").forEach((button) => {
+        if (button._clickHandler) {
+            button.removeEventListener("click", button._clickHandler);
+        }
+        // 创建新的事件处理函数
+        const handler = function (e) {
+            if (isLoggedIn) {
+                const targetPage = this.getAttribute("href");
+                if (targetPage) {
+                    window.location.href = targetPage;
+                }
+            } else {
+                e.preventDefault();
+                alert("请先登录");
+            }
+        };
+        // 添加新的事件监听器并保存引用
+        button.addEventListener("click", handler);
+        button._clickHandler = handler;
+    });
+}
 
     // 点击登录按钮，显示登录栏并添加遮罩层
     loginButton.addEventListener("click", (e) => {
@@ -174,14 +179,27 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("已退出登录");
     });
 
-    // 点击用户名区域显示/隐藏下拉菜单
-    displayName.addEventListener("click", (e) => {
-        if (isLoggedIn) {
-            e.stopPropagation(); // 阻止事件冒泡
-            dropdownMenu.style.display =
-                dropdownMenu.style.display === "block" ? "none" : "block";
+        // 点击用户名区域显示/隐藏下拉菜单（使用实时状态）
+        function bindProfileClickHandler() {
+            // 移除旧事件监听器避免重复绑定
+            if (displayName._clickHandler) {
+                displayName.removeEventListener("click", displayName._clickHandler);
+            }
+    
+            // 新的事件处理函数（直接读取localStorage）
+            const handler = function (e) {
+                const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+                if (isLoggedIn) {
+                    e.stopPropagation();
+                    dropdownMenu.style.display = 
+                        dropdownMenu.style.display === "block" ? "none" : "block";
+                }
+            };
+    
+            // 绑定新监听器并保存引用
+            displayName.addEventListener("click", handler);
+            displayName._clickHandler = handler; // 存储引用以便后续移除
         }
-    });
 
     // 点击页面其他区域关闭下拉菜单
     document.addEventListener("click", () => {

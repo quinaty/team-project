@@ -2,6 +2,13 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("这里是学生档案管理页面");
     // 没改完 ，这边要删的话可以全删掉，没什么用处
 
+    // 点击“教务系统”返回首页
+    document.getElementById("homeLink").addEventListener("click", function (e) {
+        e.stopPropagation(); // 阻止事件冒泡
+        window.location.href = "../html/index.html";
+        console.log("已返回首页");
+    });
+
     // 获取 DOM 元素
     const loginButton = document.getElementById("login_button");
     const userProfile = document.getElementById("userProfile");
