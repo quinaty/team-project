@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 检查登录状态
     function checkLoginStatus() {
-        const isLoggedIn_1 = localStorage.getItem("isLoggedIn") === "true";
+        let isLoggedIn_1 = localStorage.getItem("isLoggedIn") === "true";
         const username = localStorage.getItem("username") || "张三";
 
         //已登录，则功能区点击可以跳转

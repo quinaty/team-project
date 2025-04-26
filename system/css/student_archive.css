@@ -7,3 +7,103 @@ body {
     min-height: 100vh; /* 确保 body 高度足够 */
     background-color: #e3f1fe;
 }
+/* 外层容器样式 */
+.info {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 60px;
+    padding: 20px;
+}
+
+/* 信息区块样式 */
+.section {
+    margin-bottom: 30px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.section_title {
+    color: #3e3e3e;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+/* 信息网格布局 */
+.info_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px 30px;
+}
+
+/* 信息行样式 */
+.info_row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    /* border-bottom: 1px solid #f5f5f5; */
+    border-bottom: 1px solid #e0e0e0; /* 外边框 */
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+    .info_grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .info_row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}
+
+/* 原有标签样式 */
+.info_label {
+    color: #666;
+    font-size: 14px;
+    min-width: 100px;
+}
+
+.info_value {
+    color: #333;
+    font-size: 14px;
+    max-width: 200px;
+    word-break: break-word;
+}
+
+/* 编辑相关样式 */
+.editable {
+    cursor: pointer;
+    transition: all 0.3s;
+    padding: 6px 10px;
+    border-radius: 4px;
+}
+.editable:hover {
+    background: #f8f9fa;
+}
+.edit-input {
+    padding: 5px 8px;
+    border: 1px solid #409eff;
+    border-radius: 3px;
+    width: 80%;
+    margin-right: 10px;
+}
+
+.save-btn {
+    background-color: #409eff;
+    color: white;
+    border: none;
+    padding: 6px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.save-btn:hover {
+    background-color: #337ecc;
+}
