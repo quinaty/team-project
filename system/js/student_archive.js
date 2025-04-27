@@ -1,6 +1,44 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("这里是学生档案管理页面");
-    // 没改完 ，这边要删的话可以全删掉，没什么用处
+
+    // 模拟学生档案数据
+    const studentArchive = {
+        basicInfo: {
+            studentId: "20230001",
+            department: "计算机学院",
+            className: "软件工程1班",
+            campus: "主校区",
+            namePinyin: "Zhang San",
+            englishName: "John Smith",
+            gender: "女",
+            major: "软件工程",
+            grade: "2023级",
+            status: "在读",
+            phone: "13800138000",
+            qq: "123456789",
+            email: "student@example.com",
+            enrollmentYear: "2023",
+            foreignLanguage: "英语",
+            minor: "无",
+            bankAccount: "6222021234567890",
+        },
+        sourceInfo: {
+            candidateNumber: "2023BJ001",
+            formerName: "无",
+            gender: "女",
+            birthDate: "2005-03-15",
+            enrollmentDate: "2023-09-01",
+            ethnicity: "汉族",
+            politicalStatus: "共青团员",
+            idType: "居民身份证",
+            departureStation: "北京站",
+            homeAddress: "北京市海淀区中关村大街1号",
+            province: "北京市",
+            homePhone: "010-12345678",
+            idNumber: "110101200503150012",
+            destinationStation: "上海虹桥站",
+        },
+    };
 
     // 点击“教务系统”返回首页
     document.getElementById("homeLink").addEventListener("click", function (e) {
@@ -54,21 +92,40 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    checkLoginStatus_1();
+    // 初始化数据展示
+    function initDataDisplay() {
+        // 填充基本信息
+        Object.entries(studentArchive.basicInfo).forEach(([key, value]) => {
+            const element = document.querySelector(`[data-key="${key}"]`);
+            if (element) element.textContent = value;
+        });
+
+        // 填充生源信息
+        Object.entries(studentArchive.sourceInfo).forEach(([key, value]) => {
+            const element = document.querySelector(`[data-key="${key}"]`);
+            if (element) element.textContent = value;
+        });
+    }
 
     const storageKey = "studentData";
     let studentData = JSON.parse(localStorage.getItem(storageKey)) || {};
 
     // 初始化可编辑字段
-    document.querySelectorAll(".editable").forEach((element) => {
-        const key = element.dataset.key;
-        if (studentData[key]) element.textContent = studentData[key];
+    function initEditFunctionality() {
+        document.querySelectorAll(".editable").forEach((element) => {
+            const key = element.dataset.key;
+            if (studentData[key]) element.textContent = studentData[key];
 
-        element.addEventListener("click", function (e) {
-            e.stopPropagation();
-            if (!this.querySelector("input")) startEdit(this); // 防止重复激活
+            element.addEventListener("click", function (e) {
+                e.stopPropagation();
+                if (!this.querySelector("input")) startEdit(this); // 防止重复激活
+            });
         });
-    });
+    }
+
+    checkLoginStatus_1();
+    initDataDisplay();
+    initEditFunctionality();
 
     function startEdit(element) {
         const key = element.dataset.key;

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>教材选用页面</title>
+        <link rel="stylesheet" href="../css/index.css" />
+        <link rel="stylesheet" href="../css/textbook_selection.css" />
+        <script src="../js/index.js"></script>
+        <script src="../js/textbook_selection.js"></script>
+        <script src="../js/student_archive.js"></script>
+    </head>
+    <body>
+        <!-- 头部 -->
+        <div class="header" id="goToTop">
+            <div class="system_name" id="homeLink">教务系统</div>
+            <div class="login_info" id="loginInfo">
+                <!-- 初始显示登录按钮 -->
+                <button class="login_button" id="login_button">登录</button>
+                <!-- 写到这里，要解决子页面顶部栏的姓名那里“退出登录”的点击事件，要设置js -->
+
+                <!-- 登录后显示用户名和下拉菜单 -->
+                <div class="user_profile hidden" id="userProfile">
+                    <span class="username" id="displayName">姓名</span>
+                    <div class="dropdown_menu" id="dropdownMenu">
+                        <button class="logout_button" id="logoutButton">
+                            退出登录
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <!-- 筛选条件 -->
+            <div class="textbook_module">
+                <div class="filter-bar">
+                    <select
+                        class="term-select"
+                        id="termSelect"
+                        onchange="filterCourses()"
+                    >
+                        <option value="all">全部学期</option>
+                    </select>
+                    <div class="module-title">
+                        当前学期：<span id="currentTerm">2025春季</span>
+                    </div>
+                    <input
+                        type="text"
+                        class="search-input"
+                        id="searchInput"
+                        placeholder="输入课程名称搜索..."
+                        oninput="filterCourses()"
+                    />
+                </div>
+            </div>
+
+            <!-- 课程列表 -->
+            <div class="textbook_module">
+                <div class="module-title">课程教材选用列表</div>
+                <table class="course-table" id="courseTable">
+                    <head>
+                        <tr>
+                            <th>开设学期</th>
+                            <th>课程编号</th>
+                            <th>课程名称</th>
+                            <th>总学时</th>
+                            <th>课程大类</th>
+                            <th>课程分类</th>
+                            <th>征订类型</th>
+                            <th>操作</th>
+                        </tr>
+                    </head>
+                    <tbody id="courseList">
+                        <!-- 数据动态加载 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

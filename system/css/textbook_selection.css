@@ -1,0 +1,141 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft YaHei", sans-serif;
+}
+
+body {
+    background: #f0f2f5;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 20px auto;
+    margin-top: 60px;
+    padding: 0 20px;
+}
+
+/* 筛选栏样式 */
+.filter-bar {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.term-select {
+    padding: 8px 12px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    width: 200px;
+    font-size: 14px;
+    background: #fff;
+}
+
+.search-input {
+    padding: 8px 12px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    width: 250px;
+    font-size: 14px;
+    flex: 1;
+    transition: all 0.3s;
+}
+
+.search-input:focus {
+    border-color: #1890ff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(24, 144, 255, 0.2);
+}
+
+/* 模块样式 */
+.textbook_module {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 24px;
+    padding: 24px;
+    overflow-x: auto;
+}
+
+.module-title {
+    font-size: 18px;
+    color: #333;
+    font-weight: 600;
+    border-left: 4px solid #1890ff;
+    padding-left: 12px;
+    margin-bottom: 20px;
+}
+
+/* 表格样式 */
+.course-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1000px;
+}
+
+.course-table th,
+.course-table td {
+    padding: 12px;
+    border: 1px solid #e8e8e8;
+    font-size: 14px;
+    text-align: center;
+}
+
+.course-table th {
+    background: #fafafa;
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: 500;
+}
+
+.course-table td {
+    color: #666;
+}
+
+/* 操作按钮 */
+.action-btn {
+    padding: 4px 12px;
+    border: 1px solid #1890ff;
+    color: #1890ff;
+    border-radius: 4px;
+    cursor: pointer;
+    background: #fff;
+    transition: all 0.3s;
+}
+
+.action-btn.selected {
+    background: #1890ff;
+    color: #fff;
+}
+
+/* 响应式适配 */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .textbook_module {
+        padding: 16px;
+    }
+
+    .course-table th,
+    .course-table td {
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    .term-select {
+        width: 100%;
+    }
+
+    .filter-bar {
+        gap: 10px;
+    }
+    .search-input {
+        width: 100%;
+        order: -1; /* 移动端置顶显示 */
+    }
+}
