@@ -1,0 +1,195 @@
+/* 基础样式保留 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f0f2f5;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+    padding-top:30px;
+}
+
+.container {
+    max-width: 1200px;
+    text-align: left;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+select {
+    padding: 8px 12px;
+    border: 1px solid #939191;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.controls {
+    margin: 0 0 25px 0; /* 下边距25px */
+}
+
+.classroom-table {
+    text-align: center;
+    font-size: 14px; /* 略微放大字体 */
+    min-width: 100%; /* 表格宽度撑满容器 */
+    margin: 15px 0; /* 上下留白 */
+}
+
+.classroom-table th,
+.classroom-table td {
+    min-width: 80px; /* 单元格宽度增大 */
+    height: 50px; /* 单元格高度增加 */
+    padding: 10px;
+    position: relative;
+}
+
+.classroom-table th {
+    background-color: #f5f7fa;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* 优化状态颜色 */
+.occupied {
+    background-color: #ffe6e6;
+    color: #c0392b;
+}
+
+.available {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+.borrow-btn {
+    padding: 2px 8px;
+    font-size: 12px;
+    background: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.borrow-btn:hover {
+    background: #1976D2;
+}
+
+.classroom-table td:hover .borrow-button {
+    display: block;
+}
+
+/* 状态文字放大 */
+.classroom-table td div:first-child {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.status-text {
+    font-size: 14px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 悬浮层控制 */
+.hover-layer {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.9);
+}
+
+.classroom-table td:hover .hover-layer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 调整tooltip样式 */
+.tooltip {
+    padding: 6px;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    max-width: 160px;
+    text-align: left;
+    line-height: 1.4;
+}
+
+.tooltip br {
+    display: block;
+    margin: 4px 0;
+    content: "";
+}
+
+/* 模态框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    margin: 15% auto;
+    padding: 20px;
+    width: 400px;
+    border-radius: 8px;
+    animation: modalShow 0.3s;
+}
+
+@keyframes modalShow {
+    from {transform: translateY(-20px); opacity: 0;}
+    to {transform: translateY(0); opacity: 1;}
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.form-group {
+    margin: 15px 0;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 95%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-buttons {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.form-buttons button {
+    margin-left: 10px;
+    padding: 8px 16px;
+}

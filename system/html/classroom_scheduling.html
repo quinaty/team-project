@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>教室借用系统</title>
+    <link rel="stylesheet" href="../css/classroom_scheduling.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+     <!-- 头部 -->
+ <div class="header" id="goToTop">
+    <div class="system_name" id="homeLink">教务系统</div>
+    <div class="login_info" id="loginInfo">
+        <!-- 初始显示登录按钮 -->
+        <button class="login_button" id="login_button">登录</button>
+        <!-- 写到这里，要解决子页面顶部栏的姓名那里“退出登录”的点击事件，要设置js -->
+
+        <!-- 登录后显示用户名和下拉菜单 -->
+        <div class="user_profile hidden" id="userProfile">
+            <span class="username" id="displayName">姓名</span>
+            <div class="dropdown_menu" id="dropdownMenu">
+                <button class="logout_button" id="logoutButton">
+                    退出登录
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        <h1>教室借用系统</h1>
+        <div class="controls">
+            <select id="building">
+                <option value="">请选择教学楼</option>
+                <option value="A">教学楼A</option>
+                <option value="B">教学楼B</option>
+                <option value="C">教学楼C</option>
+            </select>
+        </div>
+        <div id="tableContainer" class="tableContainer"></div>
+    </div>
+
+    <!-- 借用申请表单 -->
+    <div id="borrowForm" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>教室借用申请</h2>
+            <form id="applicationForm">
+                <input type="hidden" id="applyRoom">
+                <input type="hidden" id="applyLesson">
+                
+                <div class="form-group">
+                    <label>姓名：</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label>班级：</label>
+                    <input type="text" id="class" required>
+                </div>
+                <div class="form-group">
+                    <label>学号：</label>
+                    <input type="text" id="studentId" required>
+                </div>
+                <div class="form-group">
+                    <label>借用原因：</label>
+                    <textarea id="reason" rows="3" required></textarea>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit">提交申请</button>
+                    <button type="button" onclick="closeForm()">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/classroom_scheduling.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="../js/student_archive.js"></script>
+</body>
+</html>
