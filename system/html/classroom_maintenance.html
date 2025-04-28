@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>教室设备维护</title>
+        <link rel="stylesheet" href="../css/index.css" />
+        <link rel="stylesheet" href="../css/classroom_maintenance.css" />
+        <script src="../js/index.js"></script>
+        <script src="../js/classroom_maintenance.js"></script>
+        <script src="../js/student_archive.js"></script>
+    </head>
+    <body>
+        <!-- 头部 -->
+        <div class="header" id="goToTop">
+            <div class="system_name" id="homeLink">教务系统</div>
+            <div class="login_info" id="loginInfo">
+                <!-- 初始显示登录按钮 -->
+                <button class="login_button" id="login_button">登录</button>
+                <!-- 写到这里，要解决子页面顶部栏的姓名那里“退出登录”的点击事件，要设置js -->
+
+                <!-- 登录后显示用户名和下拉菜单 -->
+                <div class="user_profile hidden" id="userProfile">
+                    <span class="username" id="displayName">姓名</span>
+                    <div class="dropdown_menu" id="dropdownMenu">
+                        <button class="logout_button" id="logoutButton">
+                            退出登录
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 主内容区 -->
+        <main class="container">
+            <!-- 流程状态导航 -->
+            <div class="process-steps">
+                <div class="step active" data-step="1" title="申请">申请</div>
+                <div class="step" data-step="2" title="受理">受理</div>
+                <div class="step" data-step="3" title="派工">派工</div>
+                <div class="step" data-step="4" title="完工">完工</div>
+                <div class="step" data-step="5" title="评价">评价</div>
+            </div>
+            <!-- 切换按钮 -->
+            <div class="section-toggle">
+                <button id="showRecordsBtn" class="toggle-btn">
+                    查看申请记录
+                </button>
+                <button id="showFormBtn" class="toggle-btn active">
+                    填写申请表单
+                </button>
+            </div>
+            <!-- 报修表单 -->
+            <section class="repair-form">
+                <h2>教室设备维护申请</h2>
+
+                <form id="repairForm">
+                    <!-- 报修类别 -->
+                    <div class="form-group">
+                        <label for="repairType"
+                            >报修类别<span class="required">*</span></label
+                        >
+                        <select id="repairType" class="form-control">
+                            <option value="">请选择报修类别</option>
+                        </select>
+                    </div>
+
+                    <!-- 所在校区 -->
+                    <div class="form-group">
+                        <label for="campus"
+                            >所在校区<span class="required">*</span></label
+                        >
+                        <select id="campus" class="form-control">
+                            <option value="">请选择校区</option>
+                        </select>
+                    </div>
+
+                    <!-- 教室区域 -->
+                    <div class="form-group">
+                        <label for="building"
+                            >教学楼/区域<span class="required">*</span></label
+                        >
+                        <select id="building" class="form-control">
+                            <option value="">请选择教学楼</option>
+                            <option value="主教学楼">主教学楼</option>
+                            <option value="实验楼">实验楼</option>
+                            <option value="图书馆">图书馆</option>
+                            <option value="体育馆">体育馆</option>
+                            <option value="艺术楼">艺术楼</option>
+                        </select>
+                    </div>
+
+                    <!-- 教室编号 -->
+                    <div class="form-group">
+                        <label for="roomNumber"
+                            >教室编号<span class="required">*</span></label
+                        >
+                        <input
+                            type="text"
+                            id="roomNumber"
+                            class="form-control"
+                            placeholder="例：302"
+                        />
+                    </div>
+
+                    <!-- 具体位置 -->
+                    <div class="form-group">
+                        <label for="location"
+                            >具体位置<span class="required">*</span></label
+                        >
+                        <input
+                            type="text"
+                            id="location"
+                            class="form-control"
+                            placeholder="例：教室后排空调"
+                        />
+                    </div>
+
+                    <!-- 联系电话 -->
+                    <div class="form-group">
+                        <label for="phone"
+                            >联系电话<span class="required">*</span></label
+                        >
+                        <input
+                            type="tel"
+                            id="phone"
+                            class="form-control"
+                            placeholder="请输入联系电话"
+                        />
+                    </div>
+
+                    <!-- 情况说明 -->
+                    <div class="form-group">
+                        <label for="description"
+                            >情况说明<span class="required">*</span></label
+                        >
+                        <textarea
+                            id="description"
+                            class="form-control"
+                            rows="4"
+                            placeholder="请详细描述故障情况"
+                        ></textarea>
+                    </div>
+
+                    <!-- 图片上传 -->
+                    <div class="form-group">
+                        <label>图片上传（最多6张）</label>
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-prompt">点击上传图片</div>
+                            <div
+                                class="preview-container"
+                                id="previewContainer"
+                            ></div>
+                        </div>
+                    </div>
+
+                    <!-- 提交按钮 -->
+                    <button type="submit" class="submit-btn">
+                        提交报修申请
+                    </button>
+                </form>
+            </section>
+
+            <!-- 申请记录部分 -->
+            <section class="repair-records" style="display: none">
+                <h2>我的申请记录</h2>
+                <div class="records-container">
+                    <table id="recordsTable" class="records-table">
+                        <thead>
+                            <tr>
+                                <th>申请时间</th>
+                                <th>报修类别</th>
+                                <th>所在校区</th>
+                                <th>教室位置</th>
+                                <th>联系电话</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recordsBody">
+                            <!-- 记录将通过JS动态添加 -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+        <!-- <script src="../js/index.js"></script>
+        <script src="../js/classroom_maintenance.js"></script>
+        <script src="../js/student_archive.js"></script> -->
+    </body>
+</html>
