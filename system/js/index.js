@@ -88,27 +88,29 @@ if (goToTop) { // 添加存在性检查
     // 感觉还是有点问题：登录后，刚点击功能区，还是会出现提示栏，但关掉后会正常跳转；
     // 为所有需要登录的功能按钮添加点击事件
     function IfLoginIn(isLoggedIn) {
-    document.querySelectorAll(".module_item.requires-login").forEach((button) => {
-        if (button._clickHandler) {
-            button.removeEventListener("click", button._clickHandler);
-        }
-        // 创建新的事件处理函数
-        const handler = function (e) {
-            if (isLoggedIn) {
-                const targetPage = this.getAttribute("href");
-                if (targetPage) {
-                    window.location.href = targetPage;
+        document
+            .querySelectorAll(".module_item.requires-login")
+            .forEach((button) => {
+                if (button._clickHandler) {
+                    button.removeEventListener("click", button._clickHandler);
                 }
-            } else {
-                e.preventDefault();
-                alert("请先登录");
-            }
-        };
-        // 添加新的事件监听器并保存引用
-        button.addEventListener("click", handler);
-        button._clickHandler = handler;
-    });
-}
+                // 创建新的事件处理函数
+                const handler = function (e) {
+                    if (isLoggedIn) {
+                        const targetPage = this.getAttribute("href");
+                        if (targetPage) {
+                            window.location.href = targetPage;
+                        }
+                    } else {
+                        e.preventDefault();
+                        alert("请先登录");
+                    }
+                };
+                // 添加新的事件监听器并保存引用
+                button.addEventListener("click", handler);
+                button._clickHandler = handler;
+            });
+    }
 
     // 点击登录按钮，显示登录栏并添加遮罩层
     loginButton.addEventListener("click", (e) => {
@@ -184,27 +186,27 @@ if (goToTop) { // 添加存在性检查
         console.log("已退出登录");
     });
 
-        // 点击用户名区域显示/隐藏下拉菜单（使用实时状态）
-        function bindProfileClickHandler() {
-            // 移除旧事件监听器避免重复绑定
-            if (displayName._clickHandler) {
-                displayName.removeEventListener("click", displayName._clickHandler);
-            }
-    
-            // 新的事件处理函数（直接读取localStorage）
-            const handler = function (e) {
-                const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-                if (isLoggedIn) {
-                    e.stopPropagation();
-                    dropdownMenu.style.display = 
-                        dropdownMenu.style.display === "block" ? "none" : "block";
-                }
-            };
-    
-            // 绑定新监听器并保存引用
-            displayName.addEventListener("click", handler);
-            displayName._clickHandler = handler; // 存储引用以便后续移除
+    // 点击用户名区域显示/隐藏下拉菜单（使用实时状态）
+    function bindProfileClickHandler() {
+        // 移除旧事件监听器避免重复绑定
+        if (displayName._clickHandler) {
+            displayName.removeEventListener("click", displayName._clickHandler);
         }
+
+        // 新的事件处理函数（直接读取localStorage）
+        const handler = function (e) {
+            const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+            if (isLoggedIn) {
+                e.stopPropagation();
+                dropdownMenu.style.display =
+                    dropdownMenu.style.display === "block" ? "none" : "block";
+            }
+        };
+
+        // 绑定新监听器并保存引用
+        displayName.addEventListener("click", handler);
+        displayName._clickHandler = handler; // 存储引用以便后续移除
+    }
 
     // 点击页面其他区域关闭下拉菜单
     document.addEventListener("click", () => {

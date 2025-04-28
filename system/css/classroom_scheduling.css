@@ -1,8 +1,22 @@
-/* 基础样式保留 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
     background-color: #f0f2f5;
+    padding: 20px;
+}
+
+.container1 {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 h1 {
@@ -12,184 +26,217 @@ h1 {
     padding-top:30px;
 }
 
-.container {
-    max-width: 1200px;
-    text-align: left;
-    margin: 0 auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-select {
-    padding: 8px 12px;
-    border: 1px solid #939191;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
-.controls {
-    margin: 0 0 25px 0; /* 下边距25px */
-}
-
-.classroom-table {
-    text-align: center;
-    font-size: 14px; /* 略微放大字体 */
-    min-width: 100%; /* 表格宽度撑满容器 */
-    margin: 15px 0; /* 上下留白 */
-}
-
-.classroom-table th,
-.classroom-table td {
-    min-width: 80px; /* 单元格宽度增大 */
-    height: 50px; /* 单元格高度增加 */
-    padding: 10px;
-    position: relative;
-}
-
-.classroom-table th {
-    background-color: #f5f7fa;
-    font-weight: 600;
-    color: #2c3e50;
-}
-
-/* 优化状态颜色 */
-.occupied {
-    background-color: #ffe6e6;
-    color: #c0392b;
-}
-
-.available {
-    background-color: #e8f5e9;
-    color: #2e7d32;
-}
-.borrow-btn {
-    padding: 2px 8px;
-    font-size: 12px;
-    background: #2196F3;
-    color: white;
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.borrow-btn:hover {
-    background: #1976D2;
-}
-
-.classroom-table td:hover .borrow-button {
-    display: block;
-}
-
-/* 状态文字放大 */
-.classroom-table td div:first-child {
-    font-size: 14px;
-    font-weight: 500;
+.filter-group {
     margin-bottom: 20px;
 }
 
-.status-text {
+/* 筛选界面 */
+label {
+    display: inline-block;
+    width: 80px;
+    font-weight: bold;
+    color: #555;
+}
+
+select, input[type="date"] {
+    padding: 8px;
+    width: 200px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
     font-size: 14px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    transition: border-color 0.3s;
 }
 
-/* 悬浮层控制 */
-.hover-layer {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
+select:focus, input[type="date"]:focus {
+    border-color: #1a73e8;
+    outline: none;
+}
+
+/* 表格界面 */
+table {
     width: 100%;
-    height: 100%;
-    background: rgba(255,255,255,0.9);
-}
-
-.classroom-table td:hover .hover-layer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* 调整tooltip样式 */
-.tooltip {
-    padding: 6px;
-    background: #fff;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    max-width: 160px;
-    text-align: left;
-    line-height: 1.4;
-}
-
-.tooltip br {
-    display: block;
-    margin: 4px 0;
-    content: "";
-}
-
-/* 模态框样式 */
-.modal {
+    border-collapse: collapse;
+    margin-top: 20px;
     display: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+table.visible {
+    display: table;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 14px;
+    text-align: center;
+    font-size: 14px;
+    position: relative;
+}
+
+th {
+    background-color: #1a73e8;
+    color: white;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 2px 2px -1px rgba(0,0,0,0.1);
+}
+
+.occupied {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+.vacant {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+tr:hover td {
+    background-color: #f5f5f5 !important;
+}
+
+tr:hover td.occupied {
+    background-color: #ffcdd2 !important;
+}
+
+tr:hover td.vacant {
+    background-color: #c8e6c9 !important;
+}
+
+/* 申请按钮样式 */
+.apply-btn {
+    display: none;
+    position: absolute;
+    padding: 3px 3px;
+    font-size: 14px;
+    background: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    transition: opacity 0.2s;
+}
+
+.vacant:hover .apply-btn,
+.apply-btn:hover {
+    display: block !important;
+    opacity: 1 !important;
+}
+
+.apply-btn:active {
+    transform: translate(-50%, -50%) scale(0.95);
+}
+
+/* 提示样式 */
+.tooltip {
+    position: fixed;
+    background: rgba(0,0,0,0.85);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    pointer-events: none;
+    transform: translate(-50%, -120%);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.tooltip.show {
+    opacity: 1;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(0,0,0,0.85) transparent transparent transparent;
+}
+
+/* 模态窗口样式 */
+.modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    right: 0;
+    bottom: 0;
     background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     z-index: 1000;
 }
 
-.modal-content {
-    position: relative;
+.modal {
     background: white;
-    margin: 15% auto;
-    padding: 20px;
-    width: 400px;
+    padding: 25px;
     border-radius: 8px;
-    animation: modalShow 0.3s;
+    min-width: 400px;
 }
 
-@keyframes modalShow {
-    from {transform: translateY(-20px); opacity: 0;}
-    to {transform: translateY(0); opacity: 1;}
-}
-
-.close {
-    position: absolute;
-    right: 20px;
-    top: 10px;
-    font-size: 24px;
-    cursor: pointer;
+.modal h3 {
+    margin-bottom: 20px;
+    color: #1a73e8;
 }
 
 .form-group {
-    margin: 15px 0;
+    margin-bottom: 15px;
 }
 
 .form-group label {
     display: block;
     margin-bottom: 5px;
+    width: auto;
 }
 
-.form-group input,
+.form-group input, 
 .form-group textarea {
-    width: 95%;
+    width: 100%;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
 
-.form-buttons {
+.button-group {
     margin-top: 20px;
-    text-align: right;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
 }
 
-.form-buttons button {
-    margin-left: 10px;
-    padding: 8px 16px;
+button[type="submit"] {
+    background: #1a73e8 !important;
+    color: white !important;
+    border: 1px solid #1557b0 !important;
+    padding: 8px 20px !important;
+}
+
+button.cancel {
+    background: #f5f5f5 !important;
+    color: #666 !important;
+    border: 1px solid #ddd !important;
+    padding: 8px 20px !important;
+    transition: all 0.2s;
+}
+
+button.cancel:hover {
+    background: #eee !important;
+}
+
+.pending {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    font-size: 10px;
+    background: #ffd700;
+    padding: 2px 5px;
+    border-radius: 3px;
 }
