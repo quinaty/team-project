@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>开课计划查询系统</title>
+    <link rel="stylesheet" href="../css/schedule.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/student_archive.css">
+</head>
+<body>
+     <!-- 头部 -->
+     <div class="header" id="goToTop">
+        <div class="system_name" id="homeLink">教务系统</div>
+        <div class="login_info" id="loginInfo">
+            <!-- 初始显示登录按钮 -->
+            <button class="login_button" id="login_button">登录</button>
+            <!-- 写到这里，要解决子页面顶部栏的姓名那里“退出登录”的点击事件，要设置js -->
+
+            <!-- 登录后显示用户名和下拉菜单 -->
+            <div class="user_profile hidden" id="userProfile">
+                <span class="username" id="displayName">姓名</span>
+                <div class="dropdown_menu" id="dropdownMenu">
+                    <button class="logout_button" id="logoutButton">
+                        退出登录
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 开课计划表格 -->
+<div class="filter-container">
+    <h1>开课计划</h1>
+    <div class="choice">
+        <select class="selected" id="departmentSelect">
+            <option value="">全部院系</option>
+        </select>
+        
+        <select class="selected" id="gradeSelect">
+            <option value="">全部年级</option>
+        </select>
+        
+        <select class="selected" id="courseTypeSelect">
+            <option value="">全部类型</option>
+        </select>
+        
+        <select class="selected" id="courseSelect">
+            <option value="">全部课程</option>
+        </select>
+    </div>
+
+    <div class="table-container" id="tableContainer">
+        <table>
+            <thead>
+                <tr>
+                    <th>院系</th>
+                    <th>年级</th>
+                    <th class="course-name">课程名称</th>
+                    <th>课程类型</th>
+                    <th>学时</th>
+                    <th class="teacher">授课老师</th>
+                    <th class="time">授课时间</th>
+                    <th class="class">授课班级</th>
+                    <th>开班人数</th>
+                </tr>
+            </thead>
+            <tbody id="courseTable">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+    <script src="../js/schedule.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="../js/student_archive.js"></script>
+</body>
+</html>

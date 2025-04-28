@@ -1,0 +1,110 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px;
+    background-color: #f5f5f5;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+    padding-top:30px;
+}
+
+.filter-container {
+    border-top: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.choice {
+    text-align: center;
+}
+
+.selected {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    min-width: 200px;
+    font-size: 14px;
+    flex: 1 1 auto;
+}
+
+.table-container {
+    margin-top: 30px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    display: none;
+    min-width: 800px;
+}
+
+table.show {
+    display: table;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    vertical-align: top;
+}
+
+th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+/* 长文本处理 */
+.course-name {
+    max-width: 180px;
+}
+.teacher {
+    max-width: 120px;
+}
+.time, .class {
+    max-width: 180px;
+}
+
+.course-name,
+.teacher,
+.time,
+.class {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.time span,
+.class span {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+    .filter-container {
+        gap: 10px;
+    }
+    
+    select {
+        flex: 1 1 100%;
+    }
+}
