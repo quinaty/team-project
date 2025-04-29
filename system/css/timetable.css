@@ -1,0 +1,202 @@
+:root {
+    --main-color: #ff9900;
+    --secondary-color: #666;
+    --background-color: rgba(255, 255, 255, 0.5);
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    min-height: 100vh;
+    font-family: "Microsoft Yahei", sans-serif;
+    background-size: cover;
+    background-position: center;
+}
+
+.timetable-container {
+    flex: 3;
+    margin-right: 20px;
+    margin-top: 60px;
+    background: var(--background-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; /* 保留滚动条以防极端情况 */
+    max-width: calc(100vw - 400px); /* 根据屏幕宽度动态调整 */
+}
+
+.control-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+.course-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* 启用固定布局算法 */
+}
+
+.course-table th,
+.course-table td {
+    border: 1px solid #ddd;
+    padding: 8px; /* 减少内边距 */
+    text-align: center;
+    min-width: 60px; /* 减小最小宽度 */
+    max-width: 150px;
+    word-wrap: break-word; /* 允许长单词换行 */
+    white-space: normal; /* 允许内容换行 */
+}
+
+.time-column {
+    background: #f8f8f8;
+    font-weight: normal;
+    width: 80px;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+}
+
+.merged-cell {
+    vertical-align: top;
+    position: relative;
+    min-height: 60px; /* 减小最小高度 */
+}
+
+.course-item {
+    background: #fff3e6;
+    margin: 2px;
+    padding: 6px;
+    border-radius: 4px;
+    border-left: 3px solid var(--main-color);
+    font-size: 0.85em; /* 减小字体大小 */
+}
+
+.course-item {
+    background: #fff3e6;
+    margin: 2px;
+    padding: 8px;
+    border-radius: 4px;
+    border-left: 3px solid var(--main-color);
+}
+
+.memo-container {
+    flex: 1;
+    max-width: 300px;
+    background: var(--background-color);
+    padding: 20px;
+    margin-top: 60px;
+
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bg-controls {
+    /* position: absolute; */
+    /* right: 30%;
+    top: 82px; */
+    display: flex;
+    gap: 10px;
+}
+
+.bg-btn {
+    padding: 8px 15px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 20px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.bg-btn:hover {
+    border-color: var(--main-color);
+}
+
+/* 新增备忘录样式 */
+.memo-container {
+    flex: 1;
+    max-width: 300px;
+    background: var(--background-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 60px;
+}
+
+.memo-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin: 8px 0;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+.memo-item.done {
+    opacity: 0.6;
+    background: #f5f5f5;
+}
+
+.memo-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 6px;
+    margin-right: 8px;
+}
+
+.memo-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.memo-actions button {
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.memo-actions button:hover {
+    background: #f8f8f8;
+}
+
+.memo-actions button:active {
+    transform: scale(0.95);
+}
+
+.done-btn {
+    color: #666;
+}
+
+.edit-btn {
+    color: #007bff;
+}
+
+.delete-btn {
+    color: #dc3545;
+}
+
+/* 新增响应式样式 */
+@media screen and (max-width: 768px) {
+    .course-table th,
+    .course-table td {
+        padding: 4px;
+        font-size: 12px;
+    }
+
+    .course-item {
+        padding: 4px;
+        font-size: 0.75em;
+    }
+
+    .timetable-container {
+        padding: 10px;
+        margin-right: 10px;
+    }
+}

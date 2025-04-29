@@ -4,6 +4,88 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>课表查询</title>
+        <link rel="stylesheet" href="../css/timetable.css" />
+        <link rel="stylesheet" href="../css/index.css" />
+        <script src="../js/index.js"></script>
+        <script src="../js/student_archive.js"></script>
     </head>
-    <body></body>
+    <body>
+        <!-- 头部 -->
+        <div class="header" id="goToTop">
+            <div class="system_name" id="homeLink">教务系统</div>
+            <div class="login_info" id="loginInfo">
+                <!-- 初始显示登录按钮 -->
+                <button class="login_button" id="login_button">登录</button>
+
+                <!-- 登录后显示用户名和下拉菜单 -->
+                <div class="user_profile hidden" id="userProfile">
+                    <span class="username" id="displayName">姓名</span>
+                    <div class="dropdown_menu" id="dropdownMenu">
+                        <button class="logout_button" id="logoutButton">
+                            退出登录
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="timetable-container">
+            <div class="control-bar">
+                <select class="semester-selector" id="semesterSelect">
+                    <option value="2024fall">2024秋季</option>
+                    <option value="2025spring">2025春季</option>
+                </select>
+                <select class="week-selector" id="weekSelect">
+                    <option value="all">全部周数</option>
+                </select>
+
+                <div class="bg-controls">
+                    <input type="file" id="bgUpload" hidden />
+                    <button
+                        class="bg-btn"
+                        onclick="document.getElementById('bgUpload').click()"
+                    >
+                        更换背景
+                    </button>
+                    <button class="bg-btn" onclick="resetBackground()">
+                        取消背景
+                    </button>
+                </div>
+            </div>
+            <table class="course-table" id="courseTable">
+                <thead>
+                    <tr>
+                        <th>时间段</th>
+                        <th>周一</th>
+                        <th>周二</th>
+                        <th>周三</th>
+                        <th>周四</th>
+                        <th>周五</th>
+                        <th>周六</th>
+                        <th>周日</th>
+                    </tr>
+                </thead>
+                <tbody id="courseBody"></tbody>
+            </table>
+        </div>
+
+        <div class="memo-container">
+            <div
+                style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 15px;
+                "
+            >
+                <h3 style="margin: 0">本周待办</h3>
+                <button
+                    onclick="addNewMemo()"
+                    style="background: none; border: none; font-size: 1.2em"
+                >
+                    ➕
+                </button>
+            </div>
+            <div id="memoList"></div>
+        </div>
+        <script src="../js/timetable.js"></script>
+    </body>
 </html>
